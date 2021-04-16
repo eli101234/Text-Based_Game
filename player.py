@@ -1,4 +1,5 @@
 """
+Create the features of a player
 """
 
 class Player:
@@ -15,4 +16,8 @@ class Player:
         
     def attack():
         """
+        Does an attack against a monster
+
+        Args:
+            monster(Monster object): the monster the player is facing currently
         """
