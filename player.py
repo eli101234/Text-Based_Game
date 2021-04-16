@@ -3,18 +3,28 @@ Create the features of a player
 """
 
 class Player:
-    """ Main player class. Holds the player's items and statuses
-    
-    Attributes:
+    """
+    Creates a player for the text-based video game
 
+    Attributes:
+        name(String):
+        hp(int/float):
+        power(int/float):
+        defense(int/float):
     """
 
-    def __init__():
-        """Creates new player object
+    def __init__(self, name, hp, power, defense, inventory):
         """
-        
-        
-    def attack():
+        Initializes a player object
+
+        Args:
+            name(String):
+            hp(int/float):
+            power(int/float):
+            defense(int/float):
+        """
+    
+    def attack(self, monster):
         """
         Does an attack against a monster
 
