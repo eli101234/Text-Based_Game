@@ -52,5 +52,5 @@ def healing():
     Function for player healing
     
     Args:
-        Heal_item(int/float)
+        Heal_item(int/float):
     """
