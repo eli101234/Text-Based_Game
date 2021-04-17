@@ -17,7 +17,6 @@ class Board:
         Initializes Board object
         
         Side Effects:
-           Tile objects are created
         """
     
     def board_state():
