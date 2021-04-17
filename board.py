@@ -41,6 +41,7 @@ def move():
 def battle():
     """
     Board function that engages user in battle
+    
      Side Effects:
         Calls Monster objects
         Calls Item objects
