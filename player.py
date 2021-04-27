@@ -14,8 +14,7 @@ class Player:
     """
 
     def __init__(self, name, hp, power, defense, inventory):
-        """
-        Initializes a player object
+        """Initializes a player object
 
         Args:
             name(String):
@@ -23,11 +22,16 @@ class Player:
             power(int/float):
             defense(int/float):
         """
+        self.name = name
+        self.hp = hp
+        self.power = power
+        self.defense = defense
+        self.inventory = inventory
     
     def attack(self, monster):
-        """
-        Does an attack against a monster
+        """Does an attack against a monster
 
         Args:
             monster(Monster object): the monster the player is facing currently
         """
+        
