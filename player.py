@@ -28,10 +28,12 @@ class Player:
         self.defense = defense
         self.inventory = inventory
     
-    def attack(self, monster):
+    def attack_monster(self, monster):
         """Does an attack against a monster
 
         Args:
             monster(Monster object): the monster the player is facing currently
         """
+
+
         

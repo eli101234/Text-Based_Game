@@ -18,4 +18,8 @@ class Monsters:
             for line in f:
                 lineSplit = line.split("	")
                 Mon_type, hp, power, defense = lineSplit[0],lineSplit[1],lineSplit[2],lineSplit[3]
+
+    def attack_player(self, player):
+        """
+        """
     
