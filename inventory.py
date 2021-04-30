@@ -1,8 +1,8 @@
 class Item:
-    """ Attributes--> name, damage, coeff"""
+    """ Attributes--> name"""
     def __init__(self,name,hp):
         self.name = name
-        self.hp = hp
+        self.hp = float(hp)
 
 
 class Inventory:
@@ -21,6 +21,7 @@ class Inventory:
                 name = line[0]
                 hp = float(line[1])
                 self.inventory[name] = (hp)
+
     
     def get_item(self,name):
         """
@@ -30,4 +31,7 @@ class Inventory:
             item= Item(name,hp) #presumes there's an item class to for item objects
             return item
         else: ## raise error
-            raise KeyError("Not found")  
+            raise KeyError("Not found")
+    def show_items(self):
+        items_list = [self.inventory[key] for key in self.inventory] # list comprehension
+        print(items_list)
