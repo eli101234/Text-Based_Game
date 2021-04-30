@@ -7,13 +7,13 @@ class Player:
     Creates a player for the text-based video game
 
     Attributes:
-        name(String):
-        hp(int/float):
-        power(int/float):
-        defense(int/float):
+        name(String): Name of the player
+        hp(int/float): How much hit points a character can take
+        power(int/float): How damage a player can inflict
+        defense(int/float): How much damage a player can nullify
     """
 
-    def __init__(self, name, hp, power, defense, inventory):
+    def __init__(self, name, hp, power, defense, inventory = None):
         """Initializes a player object
 
         Args:
@@ -29,7 +29,7 @@ class Player:
         self.defense = defense
         self.inventory = inventory
     
-    def attack_monster(self, monster, weapon):
+    def attack_monster(self, monster, weapon = "hands"):
         """Does an attack against a monster
 
         Args:
