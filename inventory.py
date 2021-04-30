@@ -1,5 +1,5 @@
 class Item:
-    """ Attributes--> name"""
+    """ Used to instantiate items pulled from inventory"""
     def __init__(self,name,hp):
         self.name = name
         self.hp = float(hp)
@@ -24,7 +24,9 @@ class Inventory:
 
     
     def get_item(self,name):
-        """
+        """ Uses instatiates an item object using info from inventory
+        Args:
+            name (str): item name
         """
         if name in self.inventory:
             hp = self.inventory[name]
@@ -33,5 +35,9 @@ class Inventory:
         else: ## raise error
             raise KeyError("Not found")
     def show_items(self):
+        """ Prints a list of the items in inventory
+        
+        Side-effects: Prints out a list
+        """
         items_list = [self.inventory[key] for key in self.inventory] # list comprehension
         print(items_list)
