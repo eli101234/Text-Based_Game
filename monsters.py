@@ -19,11 +19,4 @@ class Monsters:
                 lineSplit = line.split("	")
                 self.Mon_type, self.hp, self.power, self.defense = lineSplit[0],lineSplit[1],lineSplit[2],lineSplit[3]
 
-    def attack_player(self, player):
-        """
-        Method for monster (self) to attack player.
-        
-        
-        """
-        
-    
+
