@@ -119,7 +119,7 @@ def main():
             new_game.print_board()
             
         #monster encounter!    
-        if(random.randint(1, 100) < 30):
+        if(random.randint(1, 100) < 30 and option == "1"):
             #encounter a monster 0(30% chance)!
             print(f"You have encountered a monster! But this feature is still in developement!")
             pass
