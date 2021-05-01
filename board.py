@@ -1,53 +1,9 @@
-"""
+"""Main board page
 """
 import random
 import player
-
-
-class Item:
-    """ Attributes--> name"""
-    def __init__(self,name,hp):
-        self.name = name
-        self.hp = float(hp)
-
-
-class Inventory:
-    """An inventory of healing objects available to player"""
-    
-    """Attributes:
-        inventory (dict): A dictionary containing health objects and their associated hp
-    """
-    
-    def __init__(self):
-        self.inventory = {}
-        with open('items.csv', 'r', encoding = 'utf-8') as f:
-            for line in f:
-                line = line.strip()
-                line = line.split(',')
-                name = line[0]
-                hp = float(line[1])
-                self.inventory[name] = (hp)
-
-    
-    def get_item(self,name):
-        """ Uses instatiates an item object using info from inventory
-        Args:
-            name (str): item name
-        """
-        if name in self.inventory:
-            hp = self.inventory[name]
-            item= Item(name,hp) #presumes there's an item class to for item objects
-            return item
-        else: ## raise error
-            raise KeyError("Item Not found")
-    def show_items(self):
-        """ Prints a list of the items in inventory
-        
-        Side-effects: Prints out a list
-        """
-        items_list = [key for key in self.inventory] # list comprehension
-        print(items_list)
-
+import inventory
+import monsters
 
 class Board:
     """
@@ -132,15 +88,16 @@ def main():
     defense = input("How tanky are you?")
     p1 = player.Player(name, hp, power, defense)
     print(f"Get ready {name}!")
-    inventory = Inventory() # Can be Inventory(file) instead and i wont hardcode item.csv in Inventory
-    print(f'Here are your health items:')
-    inventory.show_items()
+    
+    
+    #create the inventory
 
     game_status = True
+
     while (game_status):
         option = input ("""
         1. Roll the dice
-        2. Use inventory
+        2. Check inventory
         3. Heal yourself
         4. Flee
         5. Check the board state
@@ -153,12 +110,6 @@ def main():
             new_game.change_board(new_game.place, "X")
             new_game.place += roll
             new_game.change_board(new_game.place, "ඞ")
-        elif option == "2": # using health items
-            item = input("Enter an item: ").lower()
-            item = inventory.get_item(item)
-            p1.hp = float(p1.hp) + item.hp
-            print(f'You gained {item.hp} hp, your health is now {p1.hp}')
-            
         elif option == "4":
             #A way to quit this game
             print(f"You decide this is all too much for you and flee, ending this journey...")
@@ -169,7 +120,7 @@ def main():
             
         #monster encounter!    
         if(random.randint(1, 100) < 30):
-            #encounter a monster (30% chance)!
+            #encounter a monster 0(30% chance)!
             print(f"You have encountered a monster! But this feature is still in developement!")
             pass
 
