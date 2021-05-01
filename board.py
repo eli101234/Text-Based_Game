@@ -86,7 +86,7 @@ def main():
     hp = input("How much hp will you like?")
     power = input("How strong are you?")
     defense = input("How tanky are you?")
-    p1 = player.Player(name, hp, power, defense)
+    p1 = player.Player(name, hp, power, defense, inventory.Inventory())
     print(f"Get ready {name}!")
     
     
@@ -110,6 +110,11 @@ def main():
             new_game.change_board(new_game.place, "X")
             new_game.place += roll
             new_game.change_board(new_game.place, "ඞ")
+        elif option == "2":
+            #p1.inventory.show_items()?
+            pass
+        elif option == "3":
+            pass #still in developement
         elif option == "4":
             #A way to quit this game
             print(f"You decide this is all too much for you and flee, ending this journey...")
@@ -120,7 +125,7 @@ def main():
             
         #monster encounter!    
         if(random.randint(1, 100) < 30 and option == "1"):
-            #encounter a monster 0(30% chance)!
+            #encounter a monster (30% chance)!
             print(f"You have encountered a monster! But this feature is still in developement!")
             pass
 
