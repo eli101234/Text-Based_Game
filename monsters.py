@@ -15,10 +15,10 @@ class Monsters:
             sets attributes Mon_type, hp, power, defense
         """
         self.monster = {}
-        with open('monsters_info.csv', "r", encoding="utf-8") as f:
+        with open('monster_info.txt', "r", encoding="utf-8") as f:
             for line in f:
                 lineSplit = line.split(",")
-                self.monster[lineSplit0] = lineSplit[0],lineSplit[1],lineSplit[2],lineSplit[3]
+                self.monster[lineSplit[0]] = lineSplit[1],lineSplit[2],lineSplit[3]
 
     def attack_player(self, player):
         """

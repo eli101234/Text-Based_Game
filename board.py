@@ -2,6 +2,7 @@
 """
 import random
 import player
+import monsters
 
 
 class Item:
@@ -123,6 +124,7 @@ def main():
 
     #create the board
     new_game = Board()
+    monster_game = monsters.Monsters()
     
     print("Hello and Welcome to the King of UMCP!")
     #create the player
@@ -153,6 +155,8 @@ def main():
             new_game.change_board(new_game.place, "X")
             new_game.place += roll
             new_game.change_board(new_game.place, "ඞ")
+            monster_stats = monster_game.monster["Aardvark"]
+            print(f"You have encountered an Aardvark with hp, power, defense, and chance of: {monster_stats}")
         elif option == "2": # using health items
             item = input("Enter an item: ").lower()
             item = inventory.get_item(item)
