@@ -27,30 +27,30 @@ class Player:
         choice = True
         #Should we randomize the hp/power/Def?
         while(choice == True):
-            if lower(classType) == "assassin":
+            if classType.lower() == "assassin":
                 #less hp/armor, more damage
                 self.hp = 20
                 self.power = 70
                 self.defense = 20
-                choice == False
-            elif lower(classType) == "tank":
+                choice = False
+            elif classType.lower() == "tank":
                 #less damage, more hp/armor
                 self.hp = 50
                 self.power = 20
                 self.defense = 40
-                choice == False
-            elif lower(classType) == "warrior":
+                choice = False
+            elif classType.lower() == "warrior":
                 #all around
                 self.hp = 30
                 self.power = 30
                 self.defense = 30
-                choice == False
-            elif lower(classType) == "bruiser":
+                choice = False
+            elif classType.lower() == "bruiser":
                 #more hp, more damage, less defense
                 self.hp = 40
                 self.power = 40
                 self.defense = 20
-                choice == False
+                choice = False
             else: print("Looks like I do not have this class, try again!")
     
     def attack_monster(self, monster, weapon = "hands"):
