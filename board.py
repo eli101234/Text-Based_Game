@@ -3,8 +3,6 @@
 import random
 import player
 import monsters
-import monster_info.txt
-import items.txt
 
 
 class Item:
@@ -134,7 +132,7 @@ def main():
     name = input("What is your name challenger?")
     classType = input("""What class would you like?
                       (Assassin, Tank, Warrior, Bruiser)""")
-    p1 = player.Player(name, hp, power, defense)
+    p1 = player.Player(name,classType)
     print(f"Get ready {name}!")
     inventory = Inventory() # Can be Inventory(file) instead and i wont hardcode item.csv in Inventory
     print(f'Here are your health items:')
@@ -146,7 +144,7 @@ def main():
         1. Roll the dice
         2. Use inventory
         3. Heal yourself
-        4. Flee
+        4. Flee (Exits the game)
         5. Check the board state
         (ඞ is where you are, X is where you have been, and _ is undiscovered)
         """)
@@ -159,16 +157,24 @@ def main():
             new_game.change_board(new_game.place, "ඞ")
             monster_stats = monster_game.monster["Aardvark"]
             print(f"You have encountered an Aardvark with hp, power, defense, and chance of: {monster_stats}")
+            
+            
         elif option == "2": # using health items
             item = input("Enter an item: ").lower()
             item = inventory.get_item(item)
             p1.hp = float(p1.hp) + item.hp
             print(f'You gained {item.hp} hp, your health is now {p1.hp}')
             
+            
+            
+            
         elif option == "4":
             #A way to quit this game
             print(f"You decide this is all too much for you and flee, ending this journey...")
             exit()
+            
+            
+            
         elif option == "5":
             #Checks the board
             new_game.print_board()
