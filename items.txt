@@ -1,0 +1,7 @@
+bread,5
+cheese,7
+apple,8
+ale,10
+minor elixor, 15
+major elixor, 30
+holy elixor, 100
