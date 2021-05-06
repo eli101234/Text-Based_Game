@@ -3,6 +3,8 @@
 import random
 import player
 import monsters
+import monster_info.txt
+import items.txt
 
 
 class Item:
@@ -35,6 +37,7 @@ class Inventory:
         Args:
             name (str): item name
         """
+        
         if name in self.inventory:
             hp = self.inventory[name]
             item= Item(name,hp) #presumes there's an item class to for item objects
@@ -129,9 +132,8 @@ def main():
     print("Hello and Welcome to the King of UMCP!")
     #create the player
     name = input("What is your name challenger?")
-    hp = input("How much hp will you like?")
-    power = input("How strong are you?")
-    defense = input("How tanky are you?")
+    classType = input("""What class would you like?
+                      (Assassin, Tank, Warrior, Bruiser)""")
     p1 = player.Player(name, hp, power, defense)
     print(f"Get ready {name}!")
     inventory = Inventory() # Can be Inventory(file) instead and i wont hardcode item.csv in Inventory
