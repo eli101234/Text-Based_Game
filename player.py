@@ -53,29 +53,40 @@ class Player:
                 choice = False
             else: print("Looks like I do not have this class, try again!")
     
-    def attack_monster(self, monster, weapon = "hands"):
+    def attack_monster(player, monster):
         """Does an attack against a monster
 
         Args:
             monster(Monster object): the monster the player is facing currently
             weapon (string): What kind of weapon is in use for this combat
         """
-        #are we making it so defense nulifies power?
-        #Weapons: Hands, knife, sword, Hatchet, Testudo relic?
-        #armor: Helmet, vest, testudo blessing
-        if weapon == "sword":
-            monster.hp = monster.hp - (self.power*2 - self.power*(monster.defense/100))
-            return print(f'You unseathed the sword and strike the creature, dealing {(self.power - self.power*(monster.defense/100))} damage to them!')
-        elif weapon == "hatchet":
-            monster.hp = monster.hp - (self.power*1.5 - self.power*(monster.defense/100))
-            return print(f'You take out a hatchet and "axe" them a question, dealing {(self.power - self.power*(monster.defense/100))} damage to them!')
-        elif weapon == "knife":
-            monster.hp = monster.hp - (self.power*1.2 - self.power*(monster.defense/100))
-            return print(f"You take out the knife and slash the creature, dealing {(self.power - self.power*(monster.defense/100))} damage to them!")
-        #Bare hands
-        else:
-            monster.hp = monster.hp - (self.power - self.power*(monster.defense/100))
-            return print(f"You curl your hand into a fist and lung at the creature, dealing {(self.power - self.power*(monster.defense/100))} damage to them!")
+        loop = True
+        while loop == True:
+            choice = input("""What would you like to do?
+                1. Fight
+                2. Use an item
+                3. Block
+                4. Attempt to flee
+                """)
+            
+            if(choice == 1):
+                dice = random.randint(player.Player.power - 5, player.Player.power + 5)
+                monsters.Monsters.monster.hp - (dice - round(monsters.Monsters.monster.defense/100))
+                loop = False
+            elif(choice == 2):
+                #if list is empty
+                if not board.inventory:
+                    print("Wait, you have no items! Use a different command!")
+                else:
+                    print(f"Here are your items: {board.inventory.show_items()}")
+                    input("Which would you like to choose?")
+                    pass
+            elif (choice == 3):
+                pass
+            elif(choice == 4):
+                pass
+            else: print("Please use one of the four options!")
+        
         
         
         
