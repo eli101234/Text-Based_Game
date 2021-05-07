@@ -61,7 +61,7 @@ class Player:
             monster(Monster object): the monster the player is facing currently
             weapon (string): What kind of weapon is in use for this combat
         """
-        dice = random.randint(self.power - 5, self.power + 5)
+        dice = random.randint((self.power - 5), (self.power + 5))
         hit = monster.hp - abs((dice - monster.defense))
         monsters.hp = hit
         print(f"{self.name} did {dice - monster.defense} damage to the monster!")
