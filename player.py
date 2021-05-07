@@ -53,39 +53,15 @@ class Player:
                 choice = False
             else: print("Looks like I do not have this class, try again!")
     
-    def attack_monster(player, monster):
+    def attack_monster(self, player, monster):
         """Does an attack against a monster
 
         Args:
             monster(Monster object): the monster the player is facing currently
             weapon (string): What kind of weapon is in use for this combat
         """
-        loop = True
-        while loop == True:
-            choice = input("""What would you like to do?
-                1. Fight
-                2. Use an item
-                3. Block
-                4. Attempt to flee
-                """)
-            
-            if(choice == 1):
-                dice = random.randint(player.Player.power - 5, player.Player.power + 5)
-                monsters.Monsters.monster.hp - (dice - round(monsters.Monsters.monster.defense/100))
-                loop = False
-            elif(choice == 2):
-                #if list is empty
-                if not board.inventory:
-                    print("Wait, you have no items! Use a different command!")
-                else:
-                    print(f"Here are your items: {board.inventory.show_items()}")
-                    input("Which would you like to choose?")
-                    pass
-            elif (choice == 3):
-                pass
-            elif(choice == 4):
-                pass
-            else: print("Please use one of the four options!")
+        dice = random.randint(self.power - 5, self.power + 5)
+        monster.hp - (dice - monster.defense)
         
         
         
