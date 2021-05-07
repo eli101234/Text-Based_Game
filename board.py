@@ -50,6 +50,14 @@ class Inventory:
         items_list = [key for key in self.inventory] # list comprehension
         print(items_list)
 
+class Monster_Player:
+    """
+    """
+
+    def __init__(self, hp, power, defense)
+
+
+
 
 class Board:
     """
@@ -99,16 +107,15 @@ def move():
     return random.randint(1, 6)
 
 
-def battle(player, monster):
+def battle(player, monster, monster_name):
     """
     Board function that engages user in battle
     
      Side Effects:
-        Calls Monster objects
-        Calls Item objects
+        
     """
     while(player.hp > 0 or monster.hp > 0):
-        pass
+        
         
     
 
@@ -120,6 +127,20 @@ def healing(item_name, player):
     Args:
         Heal_item(int/float):
     """
+
+def monster_encounter():
+    """
+    """
+    monster_list = ["Aardvark", "Vampire", "Werewolf", "Dark Boxer", "Loh",
+    "Titan"]
+
+    choice = random.choices(monster_list, weights = [30, 20, 20, 15, 10, 5])
+
+    monster_name = choice.pop()
+
+    print(f"You have encountered a wild {monster_name}")
+
+    return monster_name
 
 def main():
 
@@ -155,8 +176,13 @@ def main():
             new_game.change_board(new_game.place, "X")
             new_game.place += roll
             new_game.change_board(new_game.place, "ඞ")
-            monster_stats = monster_game.monster["Aardvark"]
-            print(f"You have encountered an Aardvark with hp, power, defense, and chance of: {monster_stats}")
+            
+            #monster encounter
+            if(random.randint(0, 100) < 50):
+            #encounter a monster (50% chance)!
+               monster_name = monster_encounter()
+               battle(player, monster_game, monster_name)
+
             
             
         elif option == "2": # using health items
@@ -180,10 +206,7 @@ def main():
             new_game.print_board()
             
         #monster encounter!    
-        if(random.randint(1, 100) < 30):
-            #encounter a monster (30% chance)!
-            print(f"You have encountered a monster! But this feature is still in developement!")
-            pass
+        
 
 
 if __name__ == "__main__":
