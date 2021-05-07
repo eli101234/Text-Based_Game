@@ -37,7 +37,7 @@ class Monsters:
         defense_coef = player.defense//10
         monster_hit = abs(dice - defense_coef)
         #damage calculation
-        player.hp - monster_hit
+        player.hp = player.hp - monster_hit
 
         print(f"The monster did {monster_hit} damage to {player.name}!")
         print(f"You now have {player.hp} hp left!")
