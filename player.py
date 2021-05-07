@@ -62,8 +62,8 @@ class Player:
             weapon (string): What kind of weapon is in use for this combat
         """
         dice = random.randint(self.power - 5, self.power + 5)
-        monster.hp - abs((dice - monster.defense))
-
+        hit = monster.hp - abs((dice - monster.defense))
+        monsters.hp = hit
         print(f"{self.name} did {dice - monster.defense} damage to the monster!")
         print(f"The monster has {monster.hp} hp left!")
         
