@@ -35,7 +35,7 @@ class Monsters:
         dice = random.randint(self.power - 5, self.power + 5)
         #calculating block 
         defense_coef = player.defense//10
-        monster_hit = abs(dice - defense_coef)
+        monster_hit = dice - defense_coef
         #damage calculation
         player.hp = player.hp - monster_hit
 

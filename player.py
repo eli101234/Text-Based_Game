@@ -63,10 +63,9 @@ class Player:
         """
         dice = random.randint(self.power - 5, self.power + 5)
         hit = monster.hp - abs((dice - monster.defense))
-        monsters.hp = hit
+        monster.hp = hit
         print(f"{self.name} did {dice - monster.defense} damage to the monster!")
         print(f"The monster has {monster.hp} hp left!")
-        
         
         
         
