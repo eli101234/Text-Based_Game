@@ -159,7 +159,11 @@ def main():
 
     #create the board
     new_game = Board()
+<<<<<<< HEAD
     monsters_game = monsters()
+=======
+    monster_game = monsters.Monsters()
+>>>>>>> parent of b1e9543 (added a comment)
     
     print("Hello and Welcome to the King of UMCP!")
     #create the player
