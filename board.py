@@ -3,6 +3,7 @@
 import random
 import player
 import monsters
+from time import sleep
 
 
 class Item:
@@ -118,6 +119,8 @@ def battle(player, monster, monster_name):
             break
 
         current_monster.attack_player(player)
+
+        sleep(2.0)
         
     if player.hp > 0 and current_monster.hp <= 0:
         print(f"{player.name} has won the battle vs a {monster_name}!")
