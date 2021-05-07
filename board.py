@@ -159,6 +159,7 @@ def main():
 
     #create the board
     new_game = Board()
+    #creating the monsters
     monster_game = monsters.Monsters()
     
     print("Hello and Welcome to the King of UMCP!")
