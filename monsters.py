@@ -32,15 +32,20 @@ class Monsters:
         Args:
 
         """
-        dice = random.randint(self.power - 5, self.power + 5)
-        #calculating block 
-        defense_coef = player.defense//10
-        monster_hit = abs(dice - defense_coef)
-        #damage calculation
-        player.hp = player.hp - monster_hit
-
-        print(f"The monster did {monster_hit} damage to {player.name}!")
-        print(f"You now have {player.hp} hp left!")
+        dice = random.randint((self.power - 2), (self.power + 2))
+        defense_coef = floor(player.defense//10)
+        hit = dice - defense_coef
+        
+        if hit <= 0:
+            print(f"The monster did no damage to {player.name}!")
+            print(f"The monster has {player.hp} hp left!")
+        else: 
+            player.hp = player.hp - hit
+            print(f"The monster did {hit} damage to {player.name}!")
+            if player.hp <= 0:
+                print(f"{player.name} has 0 hp!")
+            else:
+                print(f"{player.name} has {player.hp} hp left!")
         
 
 

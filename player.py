@@ -2,6 +2,7 @@
 Create the features of a player
 """
 import random
+from math import floor
 
 class Player:
     """
@@ -62,15 +63,16 @@ class Player:
             weapon (string): What kind of weapon is in use for this combat
         """
         dice = random.randint((self.power - 5), (self.power + 5))
-        hit = monster.hp - abs((dice - monster.defense))
-        monsters.hp = hit
-        print(f"{self.name} did {dice - monster.defense} damage to the monster!")
-        print(f"The monster has {monster.hp} hp left!")
+        defense_coef = floor(monster.defense//10)
+        hit = dice - defense_coef
         
-        
-        
-        
-        
-
-
-        
+        if hit <= 0:
+            print(f"{self.name} did no damage to the monster!")
+            print(f"The monster has {monster.hp} hp left!")
+        else: 
+            monster.hp = monster.hp - hit
+            print(f"{self.name} did {hit} damage to the monster!")
+            if monster.hp <= 0:
+                print(f"The monster has 0 hp!")
+            else:
+                print(f"The monster has {monster.hp} hp left!")
