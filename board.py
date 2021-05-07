@@ -189,7 +189,6 @@ def main():
             new_game.change_board(new_game.place, "X")
             new_game.place += roll
             new_game.change_board(new_game.place, "ඞ")
-<<<<<<< Updated upstream
             
             #monster encounter
             if(random.randint(0, 100) < 101):
@@ -199,9 +198,6 @@ def main():
 
             
             
-=======
-            monsters_game.monster()
->>>>>>> Stashed changes
         elif option == "2": # using health items
             item = input("Enter an item: ").lower()
             item = inventory.get_item(item)
