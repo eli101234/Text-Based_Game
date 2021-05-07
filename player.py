@@ -1,6 +1,7 @@
 """
 Create the features of a player
 """
+import random
 
 class Player:
     """
@@ -30,30 +31,30 @@ class Player:
             if classType.lower() == "assassin":
                 #less hp/armor, more damage
                 self.hp = 20
-                self.power = 70
+                self.power = 20
                 self.defense = 20
                 choice = False
             elif classType.lower() == "tank":
                 #less damage, more hp/armor
                 self.hp = 50
-                self.power = 20
+                self.power = 5
                 self.defense = 40
                 choice = False
             elif classType.lower() == "warrior":
                 #all around
                 self.hp = 30
-                self.power = 30
+                self.power = 10
                 self.defense = 30
                 choice = False
             elif classType.lower() == "bruiser":
                 #more hp, more damage, less defense
                 self.hp = 40
-                self.power = 40
+                self.power = 15
                 self.defense = 20
                 choice = False
             else: print("Looks like I do not have this class, try again!")
     
-    def attack_monster(self, player, monster):
+    def attack_monster(self, monster):
         """Does an attack against a monster
 
         Args:
@@ -61,7 +62,10 @@ class Player:
             weapon (string): What kind of weapon is in use for this combat
         """
         dice = random.randint(self.power - 5, self.power + 5)
-        monster.hp - (dice - monster.defense)
+        monster.hp - abs((dice - monster.defense))
+
+        print(f"{self.name} did {dice - monster.defense} damage to the monster!")
+        print(f"The monster has {monster.hp} hp left!")
         
         
         
