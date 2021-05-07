@@ -50,14 +50,6 @@ class Inventory:
         items_list = [key for key in self.inventory] # list comprehension
         print(items_list)
 
-class Monster_Player:
-    """
-    """
-
-    def __init__(self, hp, power, defense)
-
-
-
 
 class Board:
     """
@@ -114,7 +106,27 @@ def battle(player, monster, monster_name):
      Side Effects:
         
     """
+    monster_stats = monster.monster[monster_name]
+
+    current_monster = monsters.Monster(monster_stats[0], monster_stats[1], monster_stats[2])
+
+    print("Battle commence!")
+
     while(player.hp > 0 or monster.hp > 0):
+
+        player.attack_monster(current_monster)
+        
+        if monster.hp <= 0:
+            break
+
+        monster.attack_player(player)
+
+    if player.hp > 0 and monster.hp <= 0:
+        print(f"{player.name} has won the battle vs a {monster_name}!")
+        return True
+    elif player.hp <= 0 and monster.hp > 0:
+        print(f"The {monster_name} has won the battle vs {player.name}!")
+        return False
         
         
     
@@ -181,7 +193,7 @@ def main():
             if(random.randint(0, 100) < 50):
             #encounter a monster (50% chance)!
                monster_name = monster_encounter()
-               battle(player, monster_game, monster_name)
+               game_status = battle(player, monster_game, monster_name)
 
             
             

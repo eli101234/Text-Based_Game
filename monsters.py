@@ -1,5 +1,6 @@
 """
 """
+from math import floor
 
 class Monsters:
     """The random monsters a player can face
@@ -8,7 +9,7 @@ class Monsters:
         filename(str): Path to a csv file that contains monsters and their
         hp, type, power, defense
     """
-    def __init__(self):
+    def __init__(self, hp = 0, power = 0, defense = 0):
         """Initializes new Monster object.
         
         Side effects:
@@ -20,6 +21,10 @@ class Monsters:
                 lineSplit = line.split(",")
                 self.monster[lineSplit[0]] = lineSplit[1],lineSplit[2],lineSplit[3]
 
+        self.hp = hp
+        self.power = power
+        self.defense = defense
+
     def attack_player(self, player):
         """
         Method for monster (self) to attack player.
@@ -27,3 +32,15 @@ class Monsters:
         Args:
 
         """
+        dice = random.randint(self.power - 5, self.power + 5)
+        #calculating block 
+        defense_coef = player.defense//10
+        monster_hit = dice - defense_coef
+        #damage calculation
+        player.hp - monster_hit
+
+        print(f"The monster did {monster_hit} damage to {player.name}!")
+        
+
+
+        
