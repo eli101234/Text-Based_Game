@@ -108,7 +108,7 @@ def battle(player, monster, monster_name):
         
     """
     monster_stats = monster.monster[monster_name]
-    print(monster_stats)
+
     current_monster = monsters.Monsters(int(monster_stats[0]), int(monster_stats[1]), int(monster_stats[2]))
 
     print("Battle commence!")
