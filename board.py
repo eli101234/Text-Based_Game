@@ -114,7 +114,7 @@ def battle(player, monster, monster_name):
     print("Battle commence!")
     while(player.hp > 0 and current_monster.hp > 0):
         player.player_menu(current_monster)
-        
+        sleep(2.0)
         if current_monster.hp <= 0:
             break
 
