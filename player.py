@@ -54,7 +54,25 @@ class Player:
                 self.defense = 20
                 choice = False
             else: print("Looks like I do not have this class, try again!")
+            
+    def player_menu(self, monster):
+        """Menu for the player
+        """
+        decision = input("""What would you like to do?
+        1. Attack!
+        2. Use an item
+        4. Attempt to flea (Will drop an item, chance to not work)
+        5. Block
+        6. Check the board state
+              """)
+        if decision == 1:
+            self.attack_monster(monster)
+        elif decision == 2:
+            print(f"Here is your inventory:\n{self.inventory}")
+            input("Which item would you like to use?")
     
+    
+        
     def attack_monster(self, monster):
         """Does an attack against a monster
 
@@ -62,6 +80,7 @@ class Player:
             monster(Monster object): the monster the player is facing currently
             weapon (string): What kind of weapon is in use for this combat
         """
+        
         dice = random.randint((self.power - 5), (self.power + 5))
         defense_coef = floor(monster.defense//10)
         hit = dice - defense_coef

@@ -113,7 +113,7 @@ def battle(player, monster, monster_name):
 
     print("Battle commence!")
     while(player.hp > 0 and current_monster.hp > 0):
-        player.attack_monster(current_monster)
+        player.player_menu(current_monster)
         
         if current_monster.hp <= 0:
             break
@@ -164,8 +164,7 @@ def main():
     print("Hello and Welcome to the King of UMCP!")
     #create the player
     name = input("What is your name challenger?")
-    classType = input("""What class would you like?
-                      (Assassin, Tank, Warrior, Bruiser)""")
+    classType = input("""What class would you like?\n(Assassin, Tank, Warrior, Bruiser):""")
     p1 = player.Player(name,classType)
     print(f"Get ready {name}!")
     inventory = Inventory() # Can be Inventory(file) instead and i wont hardcode item.csv in Inventory
