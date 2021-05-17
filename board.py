@@ -274,11 +274,11 @@ def main():
             else:
                 new_game.change_board(new_game.place, "ඞ")
             
-            #monster encounter
-            if(random.randint(0, 100) < 0):
-            #encounter a monster (50% chance)!
-               monster_name = monster_encounter()
-               game_status = battle(p1, monster_game, monster_name)
+                #monster encounter
+                if(random.randint(0, 50) < 101):
+                #encounter a monster (50% chance)!
+                    monster_name = monster_encounter()
+                    game_status = battle(p1, monster_game, monster_name)
 
             
             
