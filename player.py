@@ -20,10 +20,12 @@ class Player:
         """Initializes a player object
 
         Args:
-            name(String):
-            hp(int/float):
-            power(int/float):
-            defense(int/float):
+            name (String): Name of the player/Character
+            classType (String): Name of the class
+            Inventory (Disctionary): Items the player has 
+        
+        Side effects:
+            Set attributes for name, inventory, hp, power, and defense of the player
         """
         self.name = name
         self.inventory = inventory
@@ -62,24 +64,43 @@ class Player:
             
     def player_menu(self, monster, m_name):
         """Menu for the player during combat
+        
+        Args:
+            monster (Monster Object): Takes the current monster
+            m_name (string):  The name of the monster
+        
+        Side effects:
+            Prints feedback dependning on choice made
         """
         while True:
             decision = input("""What would you like to do?
             1. Attack!
             2. Use an item
-            3. Attempt to flea (Will drop an item, chance to not work)
+            3. Attempt to flea (chance to not work)
             4. Inspect enemy""")
         
             if decision == "1":
                 self.attack_monster(monster)
                 break
+            
+            
             elif decision == "2":
                 print(f"Here is your inventory:\n{self.inventory}")
                 item_choice = input("Which item would you like to use?")
                 print("Still working on this! You just skipped a turn!")
                 break
+            
+            
             elif decision == "3":
-                pass #Still working on it
+                run_dice = random.randint(0,100)
+                if run_dice <= 30 and m_name != "Aric Bills":
+                    monster.hp = "Nigerundayo, Smokeyyyyy" #Means run away in japanese. Jojo meme
+                    break
+                else: 
+                    print("Failed to run away.")
+                    break
+            
+            
             elif decision == "4":
                 print(f"""Enemy: {m_name}\nMax hp: {monster.hp}\nPower: {monster.power}\nDefense: {monster.defense}""")
                 if m_name == "Aardvark":
@@ -96,6 +117,8 @@ class Player:
                     print("Description: A gigantic, horrific looking creature. I heard the neck is the weakspot!")
                 elif m_name == "Aric Bills":
                     print("Description: The master mine of this dungeon. You spent the last 5 months gearing for this battle. Lets do this!")
+            
+            
             else:
                 print("Wait, that was not an option. Try again!")
     
@@ -106,7 +129,9 @@ class Player:
 
         Args:
             monster(Monster object): the monster the player is facing currently
-            weapon (string): What kind of weapon is in use for this combat
+        Side effects:
+            Changes monster current hp
+            Prints if player damaged monster as well as by how much and left over hp
         """
         
         dice = random.randint((self.power - 5), (self.power + 5))
