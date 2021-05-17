@@ -116,7 +116,7 @@ class Player:
                 elif m_name == "Titan":
                     print("Description: A gigantic, horrific looking creature. I heard the neck is the weakspot!")
                 elif m_name == "Aric Bills":
-                    print("Description: The master mine of this dungeon. You spent the last 5 months gearing for this battle. Lets do this!")
+                    print("Description: The mastermind of this dungeon. You spent the last 5 months gearing for this battle. Lets do this!")
             
             
             else:

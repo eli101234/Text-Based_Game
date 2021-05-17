@@ -177,11 +177,13 @@ def final_encounter(player, monster):
 
     final_battle_result = battle(player, monster, "Aric Bills")
 
+    #win
     if final_battle_result:
         option = input("""
         Congratulations you have won the game! POGGERS!
         Would you like to play again?
         1 to play again or 2 to exit the game!""")
+    #Lose
     else:
         option = input("""
         You have died to the final boss! 
@@ -265,7 +267,7 @@ def main():
             new_game.change_board(new_game.place, "X")
             new_game.place += roll
 
-            if new_game.place >= 30:
+            if new_game.place >= 2:
                 encounter = final_encounter(p1, monster_game)
                 if encounter:
                     new_game.clear_board()
