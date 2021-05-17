@@ -20,10 +20,12 @@ class Player:
         """Initializes a player object
 
         Args:
-            name(String):
-            hp(int/float):
-            power(int/float):
-            defense(int/float):
+            name (String): Name of the player/Character
+            classType (String): Name of the class
+            Inventory (Disctionary): Items the player has 
+        
+        Side effects:
+            Set attributes for name, inventory, hp, power, and defense of the player
         """
         self.name = name
         self.inventory = inventory
@@ -62,6 +64,13 @@ class Player:
             
     def player_menu(self, monster, m_name):
         """Menu for the player during combat
+        
+        Args:
+            monster (Monster Object): Takes the current monster
+            m_name (string):  The name of the monster
+        
+        Side effects:
+            Prints feedback dependning on choice made
         """
         while True:
             decision = input("""What would you like to do?
@@ -84,7 +93,7 @@ class Player:
             
             elif decision == "3":
                 run_dice = random.randint(0,100)
-                if run_dice <= 10:
+                if run_dice <= 30 and m_name != "Aric Bills":
                     monster.hp = "Nigerundayo, Smokeyyyyy" #Means run away in japanese. Jojo meme
                     break
                 else: 
@@ -120,7 +129,9 @@ class Player:
 
         Args:
             monster(Monster object): the monster the player is facing currently
-            weapon (string): What kind of weapon is in use for this combat
+        Side effects:
+            Changes monster current hp
+            Prints if player damaged monster as well as by how much and left over hp
         """
         
         dice = random.randint((self.power - 5), (self.power + 5))

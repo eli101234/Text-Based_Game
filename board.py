@@ -3,6 +3,7 @@
 import random
 import player
 import monsters
+
 import sys
 from time import sleep
 
@@ -125,6 +126,7 @@ def battle(player, monster, monster_name):
         while(player.hp > 0 and current_monster.hp > 0):
             player.player_menu(current_monster, monster_name)
             sleep(2.0)
+            
             if current_monster.hp <= 0:
                 break
 
