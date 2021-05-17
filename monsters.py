@@ -31,6 +31,7 @@ class Monsters:
         Method for monster (self) to attack player.
         
         Args:
+            player(Player object)
 
         """
         dice = random.randint((self.power - 2), (self.power + 2))
