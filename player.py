@@ -60,7 +60,7 @@ class Player:
                 continue
             
             
-    def player_menu(self, monster):
+    def player_menu(self, monster, m_name):
         """Menu for the player during combat
         """
         while True:
@@ -82,11 +82,25 @@ class Player:
             elif decision == "3":
                 pass #Still working on it
             elif decision == "4":
-                pass # still workin
+                print(f"""Enemy: {m_name}\nMax hp: {monster.hp}\nPower: {monster.power}\nDefense: {monster.defense}""")
+                if m_name == "Aardvark":
+                    print("Description: A giant Aardvark! It is clenching its fist, ready to strike.")
+                elif m_name == "Vampire":
+                    print("Description: A tall man with sharp teeth looking thirstly at you. His skin glistens in the sun.")
+                elif m_name == "Werewolf":
+                    print("Description: A very hairy, giant beast. Maybe it likes pets?")
+                elif m_name == "Dark Boxer":
+                    print("Description: He was once a boxer in a past life. Now he roams this realm, finding victims to beat to death.")
+                elif m_name == "Loh":
+                    print("Description: Former ruler of this realm. His husk holds strong in this dungeon and is ready to strike you.")
+                elif m_name == "Titan":
+                    print("Description: ")
+                elif m_name == "Aric Bills":
+                    print("Description: The master mine of this dungeon. You spent the last 5 months gearing for this battle. Lets do this!")
             elif decision == "5":
                 pass # did board.new_game.print_board(). Breaks the terminal
             else:
-                print("Wait, that was not an option! Try again!")
+                print("Wait, that was not an option. Try again!")
     
     
         

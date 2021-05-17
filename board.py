@@ -113,7 +113,7 @@ def battle(player, monster, monster_name):
 
     print("Battle commence!")
     while(player.hp > 0 and current_monster.hp > 0):
-        player.player_menu(current_monster)
+        player.player_menu(current_monster, monster_name)
         sleep(2.0)
         if current_monster.hp <= 0:
             break
@@ -128,7 +128,6 @@ def battle(player, monster, monster_name):
     elif player.hp <= 0 and current_monster.hp > 0:
         print(f"The {monster_name} has won the battle vs {player.name}!")
         return False
-        
         
     
 
