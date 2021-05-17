@@ -1,4 +1,5 @@
 """
+Class that creates the game board and runs the game
 """
 import random
 import player
@@ -67,10 +68,6 @@ class Board:
     def __init__(self):
         """
         Initializes Board object
-        
-        Side Effects:
-            Creates game environment
-            30 Tile objects placed here
         """
         self.place = 0
         self.board_state = []
@@ -79,41 +76,57 @@ class Board:
     
     def print_board(self):
         """
-        Tile objects are created
+        prints the current game state board
         
         Side Effects:
-            Attributes: RNG spawns Monsters and Items
+            prints board to console
         """
         for space in self.board_state:
            print(space, end = " ") 
 
     def change_board(self, index,  symbol = "x"):
+        """
+        marks the board where the player was and is currently
+
+        Args:
+            index(int): the current index to update
+            symbol(character): the character to insert at the current index
+        """
         self.board_state[index] = symbol
+
+    def clear_board(self):
+        """
+        clears the board for a new game
+
+        Side Effects:
+            changes the current game board_state and place
+        """
+        self.place = 0
+        for i in range(1, 31):
+            self.board_state[i] = "_"
 
 def move():
     """
     Will use a Random Number Generator to simulate a dice roll.
     How the player progresses the game
     
-    Args:
-        Dice(range/int):
+    Returns:
+        Int: random integer between 1 and 6
     """
     return random.randint(1, 6)
-
-def clear_board(self):
-    """
-    """
-    self.place = 0
-    for i in range(1, 31):
-            self.board_state[i] = "_"
 
 
 
 def battle(player, monster, monster_name):
     """
-    Board function that engages user in battle
+    Board function that engages user in battle with monster
+
+    Args:
+        player(Player Object): the current player object
+        monster(Monster Object): the object that holds all the monsters
+        monster_name(String): name of the current monster
     
-     Side Effects:
+    Side Effects:
         
     """
     monster_stats = monster.monster[monster_name]
@@ -141,6 +154,17 @@ def battle(player, monster, monster_name):
         
 def final_encounter(player, monster):
     """
+    simulates the battle between the player and the final boss
+
+    Args:
+        player(Player Object) : the current player object
+        monster(Monsters Object): the object that holds all the monsters
+
+    Side Effects:
+        Asking user for input by printing to the console
+
+    Returns:
+        boolean: returns true if the player will like to play or try again
     """
     print("""Welcome to the final encounter challenger!
         Now you must fight Aric the final boss! Commence!""")
@@ -177,6 +201,13 @@ def healing(item_name, player):
 
 def monster_encounter():
     """
+    picks the monster for the encounter with certain chances for each
+
+    Side Effects:
+        prints the name of the monster to the console
+
+    Returns:
+        monster_name(String): the name of the monster the player will encounter
     """
     monster_list = ["Aardvark", "Vampire", "Werewolf", "Dark Boxer", "Loh",
     "Titan"]
@@ -190,6 +221,12 @@ def monster_encounter():
     return monster_name
 
 def main():
+    """
+    runs the entire text-based game
+
+    Side Effects:
+        simulates the entire game to the console
+    """
 
     #create the board
     new_game = Board()
@@ -225,7 +262,7 @@ def main():
             if new_game.place >= 30:
                 encounter = final_encounter()
                 if encounter:
-                    clear_board()
+                    new_game.clear_board()
             else:
                 new_game.change_board(new_game.place, "ඞ")
             
