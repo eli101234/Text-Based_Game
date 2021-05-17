@@ -121,29 +121,33 @@ def battle(player, monster, monster_name):
     current_monster = monsters.Monsters(int(monster_stats[0]), int(monster_stats[1]), int(monster_stats[2]))
 
     print("Battle commence!")
-    while(player.hp > 0 and current_monster.hp > 0):
-        player.player_menu(current_monster, monster_name)
-        sleep(2.0)
-        if current_monster.hp <= 0:
-            break
+    try: 
+        while(player.hp > 0 and current_monster.hp > 0):
+            player.player_menu(current_monster, monster_name)
+            sleep(2.0)
+            if current_monster.hp <= 0:
+                break
 
-        current_monster.attack_player(player)
+            current_monster.attack_player(player)
 
-        sleep(2.0)
-        
-    if player.hp > 0 and current_monster.hp <= 0:
-        print(f"{player.name} has won the battle vs a {monster_name}!")
+            sleep(2.0)
+       
+        if player.hp > 0 and current_monster.hp <= 0:
+            print(f"{player.name} has won the battle vs a {monster_name}!")
+            return True
+        elif player.hp <= 0 and current_monster.hp > 0:
+            print(f"The {monster_name} has won the battle vs {player.name}!")
+            return False
+    except:
+        print("Ran away successfully")
         return True
-    elif player.hp <= 0 and current_monster.hp > 0:
-        print(f"The {monster_name} has won the battle vs {player.name}!")
-        return False
         
         
 def final_encounter(player, monster):
     """
     """
     print("""Welcome to the final encounter challenger!
-        Now you must fight Aric the final boss! Commence!""")
+        Now you must fight Aric, the final boss! Commence!""")
 
     final_battle_result = battle(player, monster, "Aric Bills")
 

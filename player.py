@@ -67,19 +67,31 @@ class Player:
             decision = input("""What would you like to do?
             1. Attack!
             2. Use an item
-            3. Attempt to flea (Will drop an item, chance to not work)
+            3. Attempt to flea (chance to not work)
             4. Inspect enemy""")
         
             if decision == "1":
                 self.attack_monster(monster)
                 break
+            
+            
             elif decision == "2":
                 print(f"Here is your inventory:\n{self.inventory}")
                 item_choice = input("Which item would you like to use?")
                 print("Still working on this! You just skipped a turn!")
                 break
+            
+            
             elif decision == "3":
-                pass #Still working on it
+                run_dice = random.randint(0,100)
+                if run_dice <= 10:
+                    monster.hp = "Nigerundayo, Smokeyyyyy" #Means run away in japanese. Jojo meme
+                    break
+                else: 
+                    print("Failed to run away.")
+                    break
+            
+            
             elif decision == "4":
                 print(f"""Enemy: {m_name}\nMax hp: {monster.hp}\nPower: {monster.power}\nDefense: {monster.defense}""")
                 if m_name == "Aardvark":
@@ -96,6 +108,8 @@ class Player:
                     print("Description: A gigantic, horrific looking creature. I heard the neck is the weakspot!")
                 elif m_name == "Aric Bills":
                     print("Description: The master mine of this dungeon. You spent the last 5 months gearing for this battle. Lets do this!")
+            
+            
             else:
                 print("Wait, that was not an option. Try again!")
     
