@@ -3,6 +3,7 @@
 import random
 import player
 import monsters
+import sys
 from time import sleep
 
 
@@ -99,6 +100,14 @@ def move():
     """
     return random.randint(1, 6)
 
+def clear_board(self):
+    """
+    """
+    self.place = 0
+    for i in range(1, 31):
+            self.board_state[i] = "_"
+
+
 
 def battle(player, monster, monster_name):
     """
@@ -130,7 +139,32 @@ def battle(player, monster, monster_name):
         return False
         
         
-    
+def final_encounter(player, monster):
+    """
+    """
+    print("""Welcome to the final encounter challenger!
+        Now you must fight Aric the final boss! Commence!""")
+
+    final_battle_result = battle(player, monster, "Aric Bills")
+
+    if final_battle_result:
+        option = input("""
+        Congratulations you have won the game! POGGERS!
+        Would you like to play again?
+        1 to play again or 2 to exit the game!""")
+    else:
+        option = input("""
+        You have died to the final boss! 
+        Would you like to try again?
+        1 to try again or 2 to exit the game!""")
+
+    if option == 1:
+        return True
+    else:
+        sys.exit()
+
+
+
 
 
 def healing(item_name, player):
@@ -187,7 +221,13 @@ def main():
             print(f"You rolled a {roll}!")
             new_game.change_board(new_game.place, "X")
             new_game.place += roll
-            new_game.change_board(new_game.place, "ඞ")
+
+            if new_game.place >= 30:
+                encounter = final_encounter()
+                if encounter:
+                    clear_board()
+            else:
+                new_game.change_board(new_game.place, "ඞ")
             
             #monster encounter
             if(random.randint(0, 100) < 101):
