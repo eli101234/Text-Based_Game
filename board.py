@@ -266,7 +266,7 @@ def main():
             new_game.place += roll
 
             if new_game.place >= 30:
-                encounter = final_encounter()
+                encounter = final_encounter(p1, monster_game)
                 if encounter:
                     new_game.clear_board()
             else:
