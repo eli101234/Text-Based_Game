@@ -90,11 +90,11 @@ class Player:
                 elif m_name == "Werewolf":
                     print("Description: A very hairy, giant beast. Maybe it likes pets?")
                 elif m_name == "Dark Boxer":
-                    print("Description: He was once a boxer in a past life. Now he roams this realm, finding victims to beat to death.")
+                    print("Description: He was once a boxer in a past life. Now he roams this realm, finding victims to K.O, permanently.")
                 elif m_name == "Loh":
                     print("Description: Former ruler of this realm. His husk holds strong in this dungeon and is ready to strike you.")
                 elif m_name == "Titan":
-                    print("Description: ")
+                    print("Description: A gigantic, horrific looking creature. I heard the neck is the weakspot!")
                 elif m_name == "Aric Bills":
                     print("Description: The master mine of this dungeon. You spent the last 5 months gearing for this battle. Lets do this!")
             elif decision == "5":
