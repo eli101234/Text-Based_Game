@@ -68,8 +68,7 @@ class Player:
             1. Attack!
             2. Use an item
             3. Attempt to flea (Will drop an item, chance to not work)
-            4. Inspect enemy
-            5. Check the board state""")
+            4. Inspect enemy""")
         
             if decision == "1":
                 self.attack_monster(monster)
@@ -97,8 +96,6 @@ class Player:
                     print("Description: A gigantic, horrific looking creature. I heard the neck is the weakspot!")
                 elif m_name == "Aric Bills":
                     print("Description: The master mine of this dungeon. You spent the last 5 months gearing for this battle. Lets do this!")
-            elif decision == "5":
-                pass # did board.new_game.print_board(). Breaks the terminal
             else:
                 print("Wait, that was not an option. Try again!")
     
