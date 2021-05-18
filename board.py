@@ -103,7 +103,6 @@ class Board:
             changes the current game board_state and place
         """
         self.place = 0
-        self.board_state = []
         for i in range(0, 30):
             self.board_state[i] = "_"
 
