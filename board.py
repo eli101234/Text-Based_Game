@@ -103,7 +103,8 @@ class Board:
             changes the current game board_state and place
         """
         self.place = 0
-        for i in range(1, 31):
+        self.board_state = []
+        for i in range(0, 30):
             self.board_state[i] = "_"
 
 def move():
@@ -172,8 +173,9 @@ def final_encounter(player, monster):
     Returns:
         boolean: returns true if the player will like to play or try again
     """
-    print("""Welcome to the final encounter challenger!
-        Now you must fight Aric, the final boss! Commence!""")
+    print("""Welcome to the final encounter challenger!""")
+    sleep(2.00)
+    print("Now you must fight Aric, the final boss! Commence!")
 
     final_battle_result = battle(player, monster, "Aric Bills")
 
@@ -190,7 +192,7 @@ def final_encounter(player, monster):
         Would you like to try again?
         1 to try again or 2 to exit the game!""")
 
-    if option == 1:
+    if option == "1":
         return True
     else:
         sys.exit()
