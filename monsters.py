@@ -32,10 +32,12 @@ class Monsters:
         
         Args:
             player(Player object)
+        Side effect:
+
 
         """
         dice = random.randint((self.power - 2), (self.power + 2))
-        defense_coef = floor(player.defense//10)
+        defense_coef = player.defense//10
         hit = dice - defense_coef
         
         if hit <= 0:

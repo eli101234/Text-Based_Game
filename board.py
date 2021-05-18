@@ -266,10 +266,10 @@ def main():
         if option == "1":
             roll = move()
             print(f"You rolled a {roll}!")
-            new_game.change_board(new_game.place, "X")
+            new_game.change_board(new_game.place)
             new_game.place += roll
 
-            if new_game.place >= 2:
+            if new_game.place >= 30:
                 encounter = final_encounter(p1, monster_game)
                 if encounter:
                     new_game.clear_board()
@@ -277,7 +277,7 @@ def main():
                 new_game.change_board(new_game.place, "ඞ")
             
                 #monster encounter
-                if(random.randint(0, 50) < 101):
+                if(random.randint(0, 50) < 0):
                 #encounter a monster (50% chance)!
                     monster_name = monster_encounter()
                     game_status = battle(p1, monster_game, monster_name)
