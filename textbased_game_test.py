@@ -34,4 +34,5 @@ def test_attack_player():
     begin_hp = test_player.hp
     monster.attack_player(test_player)
     end_hp = test_player.hp
+    #Change of Hp
     assert end_hp < begin_hp
