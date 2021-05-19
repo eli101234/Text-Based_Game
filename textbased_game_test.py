@@ -6,7 +6,10 @@ from unittest import mock
 
 #battle test
 def test_battle():
-    
+    """
+    testing the functionality of the battle function
+    should be able to one shot an Aardvark but get one shot
+    by Aric"""
     test_monsters = monsters.Monsters()
     test_player = player.Player("Tester", "assassin")
 
