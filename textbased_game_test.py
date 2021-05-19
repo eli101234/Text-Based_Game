@@ -28,3 +28,14 @@ def test_attack_monster(capsys):
                             Test did {hit} damage to the monster!
                             The monster has 0 hp!
                             """)
+
+def test_attack_player():
+    test_player = player.Player("Test", "WARRIOR")
+    monster = monsters.Monster(30,30,30)
+    begin_hp = test_player.hp
+    monster.attackplayer(test_player)
+    end_hp = test_player.hp
+    assert end_hp < begin_hp
+    
+    
+    
