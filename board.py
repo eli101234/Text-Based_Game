@@ -10,10 +10,19 @@ from time import sleep
 
 
 class Item:
-    """ Attributes--> name"""
-    def __init__(self,name,hp):
+    """Instantiates an item object for use
+
+        Attributes:
+            name (str): item name
+            hp (float): item hp
+            power (float): item power
+            defense (float): item defense
+    """
+    def __init__(self,name,hp,power,defense):
         self.name = name
         self.hp = float(hp)
+        self.power = float(power)
+        self.defense = float(defense)
 
 class Inventory:
     """An inventory of healing objects available to player"""
@@ -22,15 +31,8 @@ class Inventory:
         inventory (dict): A dictionary containing health objects and their associated hp
     """
     
-    def __init__(self):
+    def __init__(self,):
         self.inventory = {}
-        with open('items.csv', 'r', encoding = 'utf-8') as f:
-            for line in f:
-                line = line.strip()
-                line = line.split(',')
-                name = line[0]
-                hp = float(line[1])
-                self.inventory[name] = (hp)
 
     
     def get_item(self,name):
@@ -92,15 +94,15 @@ class GameInventory:
         else:
             found_potion = self.health_inv.pop()
         if found_potion[2] == '0' and found_potion[3] == '0': #potio
-            print(f'You check the monster and find a {found_potion[0]}! It heals you by {found_potion[1]} hp.')
+            print(f'You check the room and find a {found_potion[0]}! It can heal you by {found_potion[1]} hp.')
         elif found_potion[2] != 0: # 
             print(f"""
-            You check the monster and find a legendary potion!The {found_potion[0]}!
-            It heals you by {found_potion[1]} hp and boosts your power by {found_potion[2]} points.""")
+            You check the room and find a legendary potion!The {found_potion[0]}!
+            It can heal you by {found_potion[1]} hp and boosts your power by {found_potion[2]} points.""")
         else:# found_potion[3] != 0:
             print(f"""
-                  You check the monster and find a legendary potion!
-                  The {found_potion[0]}! It heals you by {found_potion[1]} hp and boosts your defense by {found_potion[3]} points.""")
+                  You check the room and find a legendary potion!
+                  The {found_potion[0]}! It can heal you by {found_potion[1]} hp and boosts your defense by {found_potion[3]} points.""")
         return found_potion
     def present_item(self):
         if len(self.item_inv) > 10:
@@ -108,11 +110,11 @@ class GameInventory:
         else:
             found_item = self.item_inv.pop()
         if found_item[2] != '0': # power item
-            print(f'You check the monster and find the {found_item[0]}! It boosts your power by {found_item[2]} points.')
+            print(f'You check the room and find the {found_item[0]}! It boosts your power by {found_item[2]} points.')
         elif found_item[3] != '0': # defense item
-            print(f'You check the monster and find the {found_item[0]}! It boosts your defense by {found_item[3]} points.')
+            print(f'You check the room and find the {found_item[0]}! It boosts your defense by {found_item[3]} points.')
         else: # found_item[2] !=0 and found_item[3]  != 0: # legendary
-            print(f'You check the monster and find a legendary item! The {found_item[0]}! It  you boosts your power by {found_item[2]} and boosts your defense by {found_item[3]} points.')
+            print(f'You check the room and find a legendary item! The {found_item[0]}! It  you boosts your power by {found_item[2]} and boosts your defense by {found_item[3]} points.')
         return found_item
 class Board:
     """
@@ -301,7 +303,7 @@ def main():
     game_inventory = GameInventory()
      # Can be Inventory(file) instead and i wont hardcode item.csv in Inventory
     print(f'Here are your health items:')
-    inventory.show_items()
+    #inventory.show_items()
 
     game_status = True
     while (game_status):
@@ -350,18 +352,21 @@ def main():
             
             
         elif option == "2": # using health items
-            held_items = [name for name in inventory.inventory]
-            print(held_items)
-            #print(held_items)
-            item = input("Enter an item: ").lower()
-            item = inventory.get_item(item)
-            p1.hp = float(p1.hp) + float(item.hp)
-            p1.power = float(p1.power) + float(item.power)
-            p1.defense = float(p1.defense) + float(item.defense)
-            print(p1.defense)
-            p1.defense = float(p1.defense)
-            #print(f'You gained {item.hp} hp, your health is now {p1.hp}')
-            print(f'your health is {p1.hp}, your power is {p1.power}, your defense is {p1.defense}')
+            if len(inventory.inventory) == 0:
+                print('no items!')
+            else:
+                held_items = [name for name in inventory.inventory]
+                print(held_items)
+                #print(held_items)
+                item = input("Enter an item: ").lower()
+                item = inventory.get_item(item)
+                p1.hp = float(p1.hp) + float(item.hp)
+                p1.power = float(p1.power) + float(item.power)
+                p1.defense = float(p1.defense) + float(item.defense)
+                print(p1.defense)
+                p1.defense = float(p1.defense)
+                #print(f'You gained {item.hp} hp, your health is now {p1.hp}')
+                print(f'your health is {p1.hp}, your power is {p1.power}, your defense is {p1.defense}')
             
         elif option == "3":
             pass    

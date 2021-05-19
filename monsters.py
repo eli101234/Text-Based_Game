@@ -14,7 +14,7 @@ class Monsters:
         """Initializes new Monster object.
         
         Side effects:
-            sets attributes Mon_type, hp, power, defense
+            sets attributes hp, power, defense
         """
         self.hp = hp
         self.power = power
