@@ -10,10 +10,19 @@ from time import sleep
 
 
 class Item:
-    """ Attributes--> name"""
-    def __init__(self,name,hp):
+    """Instantiates an item object for use
+
+        Attributes:
+            name (str): item name
+            hp (float): item hp
+            power (float): item power
+            defense (float): item defense
+    """
+    def __init__(self,name,hp,power,defense):
         self.name = name
         self.hp = float(hp)
+        self.power = float(power)
+        self.defense = float(defense)
 
 class Inventory:
     """An inventory of healing objects available to player"""
@@ -22,15 +31,8 @@ class Inventory:
         inventory (dict): A dictionary containing health objects and their associated hp
     """
     
-    def __init__(self):
+    def __init__(self,):
         self.inventory = {}
-        with open('items.csv', 'r', encoding = 'utf-8') as f:
-            for line in f:
-                line = line.strip()
-                line = line.split(',')
-                name = line[0]
-                hp = float(line[1])
-                self.inventory[name] = (hp)
 
     
     def get_item(self,name):
@@ -301,7 +303,7 @@ def main():
     game_inventory = GameInventory()
      # Can be Inventory(file) instead and i wont hardcode item.csv in Inventory
     print(f'Here are your health items:')
-    inventory.show_items()
+    #inventory.show_items()
 
     game_status = True
     while (game_status):
