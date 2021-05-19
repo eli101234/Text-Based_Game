@@ -8,12 +8,13 @@ import monsters
 import sys
 from time import sleep
 
-
 class Item:
-    """ Attributes--> name"""
-    def __init__(self,name,hp):
+    """ Used to instantiate items pulled from inventory"""
+    def __init__(self,name,hp,power,defense):
         self.name = name
         self.hp = float(hp)
+        self.power = float(power)
+        self.defense = float(defense)
 
 
 class Inventory:
@@ -25,13 +26,6 @@ class Inventory:
     
     def __init__(self):
         self.inventory = {}
-        with open('items.csv', 'r', encoding = 'utf-8') as f:
-            for line in f:
-                line = line.strip()
-                line = line.split(',')
-                name = line[0]
-                hp = float(line[1])
-                self.inventory[name] = (hp)
 
     
     def get_item(self,name):
@@ -39,20 +33,64 @@ class Inventory:
         Args:
             name (str): item name
         """
-        
         if name in self.inventory:
-            hp = self.inventory[name]
-            item= Item(name,hp) #presumes there's an item class to for item objects
+            hp,power,defense = self.inventory[name]
+            item= Item(name,hp,power,defense) #presumes there's an item class to for item objects
+            self.inventory.pop(name)
             return item
         else: ## raise error
-            raise KeyError("Item Not found")
+            raise KeyError("Not found")
     def show_items(self):
         """ Prints a list of the items in inventory
         
         Side-effects: Prints out a list
         """
-        items_list = [key for key in self.inventory] # list comprehension
+        items_list = [self.inventory[key] for key in self.inventory] # list comprehension
         print(items_list)
+class GameInventory:
+    def __init__(self):
+        inv = []
+        with open('game_items.txt', 'r', encoding = 'utf-8') as f:
+            for line in f:
+                line = line.strip()
+                line = line.split(',')
+                name = line[0]
+                hp = line[1]
+                power = line[2]
+                defense = line[3]
+                #defense = line[3]
+                list1 = [name,hp,power,defense]
+                inv.append(list1)
+        self.game_inv = inv
+    
+
+    def present_item(self):
+       # set_0 = ([0])
+        found_item = self.game_inv.pop(random.randint(0,23))
+        if found_item[1] != 0: # potion or easter egg
+            if found_item[1] == 0: # a potion or a elixor
+                if found_item[2] != 0: # power elixor
+                    print(f'You check the monster and find a {found_item[0]}! It can heal you by {found_item[1]} hp.It also grants you {found_item[2]} power points')
+                elif found_item[3]!= 0: # defense elixor
+                    print(f'It also grants you {found_item[3]} defense points')
+                elif found_item[2] == 0: # potion
+                    print(f'You check the monster and find a {found_item[0]}! It can heal you by {found_item[1]} hp.It also grants you {found_item[2]} power points')
+                else:
+                    print(f'You check the monster and find a {found_item[0]}! It can heal you by {found_item[1]} hp.') # just potion
+            elif found_item[2] != 0: # ring
+                #print(found_item[0][2])
+                if found_item[2] != 20: # a minor or major ring
+                    print(f'You check the monster and find a {found_item[0]}! It can boost your power by {found_item[2]} points.')
+                else : # special defense ring (special)
+                    print(f'You check the monster and find the {found_item[0]}! It can boost your power by {found_item[2]} points.')
+            elif found_item[3] != 0: # necklace
+                if found_item[3] != 20:  # a minor or major ring
+                    print(f'You check the monster and find a {found_item[0]}! It can boost your defense by {found_item[3]} points.')
+                else : # special defense ring (special)
+                    print(f'You check the monster and find the {found_item[0]}! It can boost your defense by {found_item[3]} points.')
+        else:
+            print("should be easter egg")
+        return found_item
 
 
 class Board:
@@ -247,6 +285,7 @@ def main():
     classType = input("""What class would you like?\n(Assassin, Tank, Warrior, Bruiser):""")
     p1 = player.Player(name,classType)
     print(f"Get ready {name}!")
+    game_inventory = GameInventory()
     inventory = Inventory() # Can be Inventory(file) instead and i wont hardcode item.csv in Inventory
     print(f'Here are your health items:')
     inventory.show_items()
@@ -267,6 +306,12 @@ def main():
             print(f"You rolled a {roll}!")
             new_game.change_board(new_game.place)
             new_game.place += roll
+            new_item = game_inventory.present_item()
+            name = new_item[0]
+            hp = new_item[1]
+            power = new_item[2]
+            defense = new_item[3]
+            inventory.inventory[name] = (hp,power,defense)
 
             if new_game.place >= 30:
                 encounter = final_encounter(p1, monster_game)
@@ -280,15 +325,24 @@ def main():
                 #encounter a monster (50% chance)!
                     monster_name = monster_encounter()
                     game_status = battle(p1, monster_game, monster_name)
+                    
 
             
             
         elif option == "2": # using health items
+            held_items = [name for name in inventory.inventory]
+            test = inventory.inventory
+            print(test)
+            #print(held_items)
             item = input("Enter an item: ").lower()
             item = inventory.get_item(item)
-            p1.hp = float(p1.hp) + item.hp
-            print(f'You gained {item.hp} hp, your health is now {p1.hp}')
-            
+            p1.hp = float(p1.hp) + float(item.hp)
+            p1.power = float(p1.power) + float(item.power)
+            p1.defense = float(p1.defense) + float(item.defense)
+            print(p1.defense)
+            p1.defense = float(p1.defense)
+            #print(f'You gained {item.hp} hp, your health is now {p1.hp}')
+            print(f'your health is now {p1.hp}, your power is {p1.power}, your defense is {p1.defense}')
             
             
             
