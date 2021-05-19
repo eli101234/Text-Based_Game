@@ -13,11 +13,11 @@ def test_battle():
     test_monsters = monsters.Monsters()
     test_player = player.Player("Tester", "assassin",test_inventory)
 
-    #battle between player and Aardvark
+    #battle between player and Aardvark. Player should win and return True
     with mock.patch("builtins.input", side_effect=["1"]):
         assert board.battle(test_player, test_monsters, "Aardvark") == True
     
-    #battle between player and Aric
+    #battle between player and Aric. Player should lose and return False
     with mock.patch("builtins.input", side_effect=["1"]):
         assert board.battle(test_player, test_monsters, "Aric Bills") == False
         
