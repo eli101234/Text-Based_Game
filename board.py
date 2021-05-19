@@ -8,13 +8,12 @@ import monsters
 import sys
 from time import sleep
 
+
 class Item:
-    """ Used to instantiate items pulled from inventory"""
-    def __init__(self,name,hp,power,defense):
+    """ Attributes--> name"""
+    def __init__(self,name,hp):
         self.name = name
         self.hp = float(hp)
-        self.power = float(power)
-        self.defense = float(defense)
 
 
 class Inventory:
@@ -26,6 +25,13 @@ class Inventory:
     
     def __init__(self):
         self.inventory = {}
+        with open('items.csv', 'r', encoding = 'utf-8') as f:
+            for line in f:
+                line = line.strip()
+                line = line.split(',')
+                name = line[0]
+                hp = float(line[1])
+                self.inventory[name] = (hp)
 
     
     def get_item(self,name):
@@ -33,6 +39,7 @@ class Inventory:
         Args:
             name (str): item name
         """
+        
         if name in self.inventory:
             self.hp,self.power,self.defense = self.inventory[name]
             item= Item(name,self.hp,self.power,self.defense) #presumes there's an item class to for item objects
@@ -47,7 +54,7 @@ class Inventory:
         
         Side-effects: Prints out a list
         """
-        items_list = [self.inventory[key] for key in self.inventory] # list comprehension
+        items_list = [key for key in self.inventory] # list comprehension
         print(items_list)
 class GameInventory:
     def __init__(self):
@@ -155,6 +162,7 @@ class Board:
             changes the current game board_state and place
         """
         self.place = 0
+        self.board_state = []
         for i in range(0, 30):
             self.board_state[i] = "_"
 
@@ -333,11 +341,11 @@ def main():
                 new_game.change_board(new_game.place, "ඞ")
             
                 #monster encounter
-                if(random.randint(0, 50) < 0):
+                if(random.randint(0, 100) <50):
                 #encounter a monster (50% chance)!
                     monster_name = monster_encounter()
                     game_status = battle(p1, monster_game, monster_name)
-                    
+                    #item
 
             
             
@@ -355,6 +363,8 @@ def main():
             #print(f'You gained {item.hp} hp, your health is now {p1.hp}')
             print(f'your health is {p1.hp}, your power is {p1.power}, your defense is {p1.defense}')
             
+        elif option == "3":
+            pass    
             
             
         elif option == "4":
