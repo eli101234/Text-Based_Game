@@ -20,7 +20,7 @@ class Monsters:
         self.power = power
         self.defense = defense
         self.monster = {}
-        with open('Text-Based_Game\monster_info.txt', "r", encoding="utf-8") as f:
+        with open('monster_info.txt', "r", encoding="utf-8") as f:
             for line in f:
                 lineSplit = line.split(",")
                 self.monster[lineSplit[0]] = lineSplit[1],lineSplit[2],lineSplit[3]
