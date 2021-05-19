@@ -20,11 +20,11 @@ def test_battle():
         
 def test_attack_monster(capsys):
     test_player = player.Player("Test", "BRUISER")
-    monster = monsters.Monster(1,1,1)
-    
+    monster = monsters.Monsters(1,1,1)
+    hit = test_player.power
     test_player.attack_monster(monster)
     captured = capsys.readouterr()
-    assert captured.out == ("""
-                            Test did {hit} damage to the monster!
-                            The monster has 0 hp!
-                            """)
+    if hit >= self.power - 5 and hit <= self.power + 5:
+        assert captured.out == (f"""
+                                Test did {hit} damage to the monster!\nThe monster has 0 hp!
+                                """)
