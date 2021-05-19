@@ -1,10 +1,8 @@
 """
 Create the features of a player
 """
-import random
-import board
+import random,board,item
 from math import floor
-
 class Player:
     """
     Creates a player for the text-based video game
@@ -16,7 +14,7 @@ class Player:
         defense(int/float): How much damage a player can nullify
     """
 
-    def __init__(self, name, classType, inventory = None):
+    def __init__(self, name, classType,Inventory):
         """Initializes a player object
 
         Args:
@@ -28,7 +26,8 @@ class Player:
             Set attributes for name, inventory, hp, power, and defense of the player
         """
         self.name = name
-        self.inventory = inventory
+        self.inventory = Inventory
+        
         
         
         while(True):
@@ -86,11 +85,9 @@ class Player:
             
             elif decision == "2":
                 print(f"Here is your inventory:\n{self.inventory}")
-                item_choice = input("Which item would you like to use?")
-                print("Still working on this! You just skipped a turn!")
-                break
-            
-            
+                self.inventory
+                print('hi')
+        
             elif decision == "3":
                 run_dice = random.randint(0,100)
                 if run_dice <= 30 and m_name != "Aric Bills":
