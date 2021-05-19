@@ -1,0 +1,13 @@
+minor potion,8,0,0
+minor potion,8,0,0
+minor potion,8,0,0
+minor potion,8,0,0
+minor potion,8,0,0
+greater potion,13,0,0
+greater potion,13,0,0
+greater potion,13,0,0
+greater potion,13,0,0
+major potion,20,0,0
+major potion,20,0,0
+holy elixor of fortitude,35,0,10
+holy elixor of strength,35,10,0
