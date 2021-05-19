@@ -1,6 +1,6 @@
 import pytest
 from math import isclose
-import board, inventory as inv, monsters, player
+import board, monsters, player
 import builtins
 from unittest import mock
 
