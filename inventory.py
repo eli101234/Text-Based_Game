@@ -34,6 +34,7 @@ class Inventory:
         """
         items_list = [self.inventory[key] for key in self.inventory] # list comprehension
         print(items_list)
+        
 class GameInventory:
     def __init__(self):
         inv = []
