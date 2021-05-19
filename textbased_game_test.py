@@ -6,6 +6,9 @@ from unittest import mock
 
 #battle test
 def test_battle():
+    """
+    Does battle() return true if the player wins and false if they lose?
+    """
     test_inventory = board.Inventory()
     test_monsters = monsters.Monsters()
     test_player = player.Player("Tester", "assassin",test_inventory)
