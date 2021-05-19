@@ -1,6 +1,6 @@
 import pytest
 from math import isclose
-import board, items as inv, monsters, player
+import board, item as inv, monsters, player
 import builtins
 from unittest import mock
 
@@ -28,7 +28,8 @@ def test_attack_monster(capsys):
                                 """)
         
 def test_attack_player():
-    test_player = player.Player("Test", "WARRIOR")
+    test_inventory = board.Inventory()
+    test_player = player.Player("Test", "WARRIOR", test_inventory)
     monster = monsters.Monster(30,30,30)
     begin_hp = test_player.hp
     monster.attackplayer(test_player)
