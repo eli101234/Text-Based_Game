@@ -143,7 +143,6 @@ class Player:
             Changes monster current hp
             Prints if player damaged monster as well as by how much and left over hp
         """
-        
         dice = random.randint((self.power - 5), (self.power + 5))
         defense_coef = floor(monster.defense//10)
         hit = dice - defense_coef
