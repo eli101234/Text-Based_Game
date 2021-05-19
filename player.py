@@ -84,18 +84,22 @@ class Player:
             
             
             elif decision == "2":
-                print(f"Here is your inventory:")
-                self.inventory.show_items()
-                item = input('What item?')
-                item = self.inventory.get_item(item)
-                self.hp = float(self.hp) + float(item.hp)
-                self.power = float(self.power) + float(item.power)
-                self.defense = float(self.defense) + float(item.defense)
-                print(self.defense)
-                self.defense = float(self.defense)
-                #print(f'You gained {item.hp} hp, your health is now {p1.hp}')
-                print(f'your health is {self.hp}, your power is {self.power}, your defense is {self.defense}') 
-
+                if len(self.inventory.inventory) == 0:
+                    print('no items!')
+                    
+                else:
+                    print(f"Here is your inventory:")
+                    self.inventory.show_items()
+                    item = input('What item?')
+                    item = self.inventory.get_item(item)
+                    self.hp = float(self.hp) + float(item.hp)
+                    self.power = float(self.power) + float(item.power)
+                    self.defense = float(self.defense) + float(item.defense)
+                    print(self.defense)
+                    self.defense = float(self.defense)
+                    #print(f'You gained {item.hp} hp, your health is now {p1.hp}')
+                    print(f'your health is {self.hp}, your power is {self.power}, your defense is {self.defense}') 
+                    break
         
             elif decision == "3":
                 run_dice = random.randint(0,100)
