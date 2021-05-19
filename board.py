@@ -15,7 +15,6 @@ class Item:
         self.name = name
         self.hp = float(hp)
 
-
 class Inventory:
     """An inventory of healing objects available to player"""
     
@@ -56,6 +55,7 @@ class Inventory:
         """
         items_list = [key for key in self.inventory] # list comprehension
         print(items_list)
+
 class GameInventory:
     def __init__(self):
         health_inv = []
