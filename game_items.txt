@@ -1,17 +1,16 @@
-minor ring of strength,0,4,0
-minor strength ring,0,4,0
-minor strength ring,0,4,0
-major strength ring,0,7,0
-major strength ring,0,7,0
-minor strength ring,0,4,0
-major strength ring,0,7,0
-brawler's ring,0,20,0
-brawler's ring,0,20,0
-minor necklace of protection,0,0,4
-minor necklace of protection,0,0,4
-minor necklace of protection,0,0,4
-major ring of protection,0,0,7
-major ring of protection,0,0,7
-angel's necklace,0,0,20
-angel's necklace,0,0,20
-easter egg, 20,20,20
+blue ring,0,4,0
+red ring,0,4,0
+green ring,0,4,0
+orange ring,0,7,0
+blue ring,0,7,0
+yellow ring,0,4,0
+black ring,0,7,0
+enchanted ring,0,20,0
+blessed ring,0,20,0
+blue necklace,0,0,4
+orange necklace,0,0,4
+indigo necklace,0,0,4
+gold necklace,0,0,7
+diamond necklace,0,0,7
+blessed necklace,0,0,20
+enchanted necklace,0,0,20
