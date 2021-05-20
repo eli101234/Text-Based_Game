@@ -24,6 +24,10 @@ def test_battle():
         assert board.battle(test_player, test_monsters, "Aric Bills") == False
         
 def test_attack_monster(capsys):
+    """
+    Does attack_monster method make a player do damage to a monster? What if it
+    hurts more than the hp given, will it display a negative?
+    """
     test_inventory = board.Inventory()
     test_player = player.Player("Test", "BRUISER", test_inventory)
     monster = monsters.Monsters(1,1,1)
@@ -39,6 +43,9 @@ def test_attack_monster(capsys):
         
 
 def test_attack_player():
+    """
+    Can the monster attack the player? Does it do damage?
+    """
     test_inventory = board.Inventory()
     test_player = player.Player("Test", "WARRIOR", test_inventory)
     monster = monsters.Monsters(30,30,30)

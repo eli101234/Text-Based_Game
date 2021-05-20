@@ -28,25 +28,24 @@ class Player:
         self.name = name
         self.inventory = Inventory
         
-        
-        
+       #Make sure player picks from selected few 
         while(True):
             if classType.lower() == "assassin":
                 #less hp/armor, more damage
-                self.hp = 20
-                self.power = 20
+                self.hp = 30
+                self.power = 40
                 self.defense = 20
                 break
             elif classType.lower() == "tank":
                 #less damage, more hp/armor
                 self.hp = 50
-                self.power = 5
+                self.power = 20
                 self.defense = 40
                 break
             elif classType.lower() == "warrior":
                 #all around
                 self.hp = 30
-                self.power = 10
+                self.power = 40
                 self.defense = 30
                 break
             elif classType.lower() == "bruiser":

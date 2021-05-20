@@ -1,4 +1,4 @@
-"""
+"""Class for monsters
 """
 from math import floor
 import random
@@ -33,7 +33,9 @@ class Monsters:
         Args:
             player(Player object)
         Side effect:
-
+            Changes player hp
+            Prints different outcomes depending if the player is killed, monster
+            does no damage, or monster does damage.
 
         """
         dice = random.randint((self.power - 2), (self.power + 2))
