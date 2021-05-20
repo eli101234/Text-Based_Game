@@ -1,3 +1,4 @@
+"""Mainly used for the fighting menu, different from the board inventory/GameInventory"""
 import random
 class Item:
     """ Used to instantiate items pulled from inventory"""
@@ -47,21 +48,17 @@ class Inventory:
         print(items_list)
         
 class GameInventory:
-    """ Initilizes items pulled from GameInventory
+    """Creates the inventory for the game board itself. Players get the item
+    from here. Makes a finite amount of items for the board
     
     Attributes:
-        Menu (dict): a menu displaying a variety of options avalaible to the player
-        
-    Side Effects:
-        allows player to use inventory and inventory items throughout the game
+        health_inv(list): Potion items. Consumables that grant health and stats
+        item_inv(list): Regular items. Grant stats primarily
     """
     
     def __init__(self):
         """
-        Creates a menu styled game inventory the player can use to boost stats
-        
-        Side Effects:
-            Menu dictionary allows player to select multiple stats
+        Initializes an inventory for the board
         """
         health_inv = []
         item_inv = []
@@ -92,13 +89,10 @@ class GameInventory:
     
 
     def present_potion(self):
-        """ A method for finding items throughout the game
+        """ Shows the potion and the stats associated with it
         
-                Args: 
-                    found_item (object): item found at specified roll
-                    
-                Side Effects: 
-                    allows for collection of inventory items and player stat boosts
+        Side effects:
+            prints the list of current potions in a player inventory
         """
         
         if len(self.health_inv) >8:
@@ -117,13 +111,10 @@ class GameInventory:
                   The {found_potion[0]}! It heals you by {found_potion[1]} hp and boosts your defense by {found_potion[3]} points.""")
         return found_potion
     def present_item(self):
-        """.git/A method for finding items throughout the game
+        """ Shows the item and the stats associated with it
         
-                Args: 
-                    found_item (object): item found at specified roll
-                    
-                Side Effects: 
-                    allows for collection of inventory items and player stat boosts
+        Side effects:
+            prints the list of current items in a player inventory
         """
         if len(self.item_inv) > 10:
             found_item = self.item_inv.pop(random.randint(-2,2))
