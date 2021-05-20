@@ -36,3 +36,13 @@ def test_attack_player():
     end_hp = test_player.hp
     #Change of Hp
     assert end_hp < begin_hp
+
+def test_validate_inventory():
+    """Does inventory detect and handle foreign items as expected?"""
+    test_category = board.Inventory()
+    test_category.inventory['test_potion'] = 12,10,20
+    inventory_result = test_category.get_item('foreign_name')
+    captured = capsys.readouterr()
+    assert captured.out == ("we don't have that, try again.\n"
+                            "What item?")
+    
