@@ -3,6 +3,8 @@ from math import isclose
 import board, item , monsters, player
 import builtins
 from unittest import mock
+import unittest                                                                                                                                                                               
+import unittest.mock
 
 #battle test
 def test_battle():
@@ -30,7 +32,7 @@ def test_attack_monster(capsys):
     end = monster.hp
     #This helps me get just how much damage we randomly did to the monster
     total = begin - end
-    #The actual test
+    #The actual test. Should kill monster, but hp should not show as negative
     captured = capsys.readouterr()
     assert captured.out == (f"Test did {str(total)} damage to the monster!\n"
                             "The monster has 0 hp!\n")
@@ -47,12 +49,18 @@ def test_attack_player():
     #Change of Hp, player got hurt
     assert end_hp < begin_hp
 
+
 def test_validate_inventory():
     """Does inventory detect and handle foreign items as expected?"""
     test_category = board.Inventory()
     test_category.inventory['test_potion'] = 12,10,20
-    inventory_result = test_category.get_item('foreign_name')
-    captured = capsys.readouterr()
-    assert captured.out == ("we don't have that, try again.\n"
-                            "What item?")
-    
+    #Try to get an item that does not exist in player inventory
+    try:
+        with mock.patch("builtins.input", side_effect=['Foreign Item']):
+            assert test_category.get_item('Foreign Item') == False
+    #Stops the loop since that item does not exist in player inventory
+    except StopIteration:
+        #Tries to find another item and succeeds
+        with mock.patch("builtins.input", side_effect=['test_potion']):
+            assert test_category.get_item('test_potion')
+ 
