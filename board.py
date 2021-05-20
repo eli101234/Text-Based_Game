@@ -59,6 +59,7 @@ class Inventory:
         items_list = [key for key in self.inventory] # list comprehension
         print(items_list)
 
+
 class GameInventory:
     def __init__(self):
         health_inv = []
@@ -91,7 +92,7 @@ class GameInventory:
 
     def present_potion(self):
         if len(self.health_inv) >8:
-            found_potion = self.health_inv.pop(random.randint(-4,4))
+            found_potion = self.health_inv.pop(random.randint(-2,2))
         else:
             found_potion = self.health_inv.pop()
         if found_potion[2] == '0' and found_potion[3] == '0': #potio
@@ -107,7 +108,7 @@ class GameInventory:
         return found_potion
     def present_item(self):
         if len(self.item_inv) > 10:
-            found_item = self.item_inv.pop(random.randint(-5,4))
+            found_item = self.item_inv.pop(random.randint(-2,2))
         else:
             found_item = self.item_inv.pop()
         if found_item[2] != '0': # power item

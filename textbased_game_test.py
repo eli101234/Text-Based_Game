@@ -50,16 +50,22 @@ def test_attack_player():
     assert end_hp < begin_hp
 
 
-def test_validate_inventory():
+def test_validate_inventory(capsys):
     """Does inventory detect and handle foreign items as expected?"""
     test_category = board.Inventory()
     test_category.inventory['test_potion'] = 12,10,20
-    #Try to get an item that does not exist in player inventory
-    print(test_category.inventory.keys())
-
-    test_item = test_category.get_item("test_potion")
     
-    print("test_potion" == test_item.name)
+    #We can place an item in the player inventory
+    test_category.show_items()
+    captured = capsys.readouterr()
+    assert captured.out == ("['test_potion']\n")
+    
+    #Then use the get_item method to remove the item from the inventory
+    test_category.get_item("test_potion")
+    test_category.show_items()
+    captured = capsys.readouterr()
+    assert captured.out == ("[]\n")
+    
+    
 
-    assert test_category.inventory.get(test_item.name) == (12, 10, 20)
  

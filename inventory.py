@@ -13,6 +13,11 @@ class Inventory:
     """
     
     def __init__(self):
+        """ Initializes an inventory object
+        
+            Side Effects:
+                Inventory option is made avaliable in board.py
+        """
         self.inventory = {}
 
     
@@ -36,7 +41,20 @@ class Inventory:
         print(items_list)
         
 class GameInventory:
+    """
+    Initializes items pulled from Gameinventory
+    
+    Attributes: 
+        Menu (dict): a menu displaying a variety of options available to the player
+    """
+    
     def __init__(self):
+        """
+        Creates a menu styled game inventory the player can use to boost stats
+        
+        Side Effects:
+            Menu dictionary allows player to select multiple stats
+        """
         inv = []
         with open('game_items.txt', 'r', encoding = 'utf-8') as f:
             for line in f:
@@ -53,6 +71,14 @@ class GameInventory:
     
 
     def present_item(self):
+        """ A method for finding items throughout the game
+        
+                Args: 
+                    found_item (object): item found at specified roll
+                    
+                Side Effects: 
+                    allows for collection of inventory items and player stat boosts
+        """
        # set_0 = ([0])
         found_item = self.game_inv.pop(random.randint(0,23))
         if found_item[0][1] != 0: # potion or easter egg
