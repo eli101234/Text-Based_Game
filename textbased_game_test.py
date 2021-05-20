@@ -55,12 +55,11 @@ def test_validate_inventory():
     test_category = board.Inventory()
     test_category.inventory['test_potion'] = 12,10,20
     #Try to get an item that does not exist in player inventory
-    try:
-        with mock.patch("builtins.input", side_effect=['Foreign Item']):
-            assert test_category.get_item('Foreign Item') == False
-    #Stops the loop since that item does not exist in player inventory
-    except StopIteration:
-        #Tries to find another item and succeeds
-        with mock.patch("builtins.input", side_effect=['test_potion']):
-            assert test_category.get_item('test_potion')
+    print(test_category.inventory.keys())
+
+    test_item = test_category.get_item("test_potion")
+    
+    print("test_potion" == test_item.name)
+
+    assert test_category.inventory.get(test_item.name) == (12, 10, 20)
  
