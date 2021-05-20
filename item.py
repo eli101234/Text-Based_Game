@@ -15,6 +15,12 @@ class Inventory:
     """
     
     def __init__(self):
+        """
+        Creates a menu styled game inventory the player can use to boost stats
+        
+        Side Effects:
+            Menu dictionary allows player to select multiple stats
+        """
         self.inventory = {}
 
     
@@ -40,7 +46,22 @@ class Inventory:
         print(items_list)
         
 class GameInventory:
+    """ Initilizes items pulled from GameInventory
+    
+    Attributes:
+        Menu (dict): a menu displaying a variety of options avalaible to the player
+        
+    Side Effects:
+        allows player to use inventory and inventory items throughout the game
+    """
+    
     def __init__(self):
+        """
+        Creates a menu styled game inventory the player can use to boost stats
+        
+        Side Effects:
+            Menu dictionary allows player to select multiple stats
+        """
         health_inv = []
         item_inv = []
         with open('game_items.txt', 'r', encoding = 'utf-8') as f:
@@ -70,6 +91,15 @@ class GameInventory:
     
 
     def present_potion(self):
+        """ A method for finding items throughout the game
+        
+                Args: 
+                    found_item (object): item found at specified roll
+                    
+                Side Effects: 
+                    allows for collection of inventory items and player stat boosts
+        """
+        
         if len(self.health_inv) >8:
             found_potion = self.health_inv.pop(random.randint(-4,4))
         else:
@@ -86,6 +116,14 @@ class GameInventory:
                   The {found_potion[0]}! It heals you by {found_potion[1]} hp and boosts your defense by {found_potion[3]} points.""")
         return found_potion
     def present_item(self):
+        """.git/A method for finding items throughout the game
+        
+                Args: 
+                    found_item (object): item found at specified roll
+                    
+                Side Effects: 
+                    allows for collection of inventory items and player stat boosts
+        """
         if len(self.item_inv) > 10:
             found_item = self.item_inv.pop(random.randint(-5,4))
         else:
