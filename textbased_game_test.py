@@ -50,17 +50,22 @@ def test_attack_player():
     assert end_hp < begin_hp
 
 
-def test_validate_inventory():
+def test_validate_inventory(capsys):
     """Does inventory detect and handle foreign items as expected?"""
     test_category = board.Inventory()
     test_category.inventory['test_potion'] = 12,10,20
-    #Try to get an item that does not exist in player inventory
-    try:
-        with mock.patch("builtins.input", side_effect=['Foreign Item']):
-            assert test_category.get_item('Foreign Item') == False
-    #Stops the loop since that item does not exist in player inventory
-    except StopIteration:
-        #Tries to find another item and succeeds
-        with mock.patch("builtins.input", side_effect=['test_potion']):
-            assert test_category.get_item('test_potion')
+    
+    #We can place an item in the player inventory
+    test_category.show_items()
+    captured = capsys.readouterr()
+    assert captured.out == ("['test_potion']\n")
+    
+    #Then use the get_item method to remove the item from the inventory
+    test_category.get_item("test_potion")
+    test_category.show_items()
+    captured = capsys.readouterr()
+    assert captured.out == ("[]\n")
+    
+    
+
  

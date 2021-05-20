@@ -13,6 +13,11 @@ class Inventory:
     """
     
     def __init__(self):
+        """ Initializes an inventory object
+        
+            Side Effects:
+                Inventory option is made avaliable in board.py
+        """
         self.inventory = {}
 
     
@@ -44,6 +49,12 @@ class GameInventory:
     """
     
     def __init__(self):
+        """
+        Creates a menu styled game inventory the player can use to boost stats
+        
+        Side Effects:
+            Menu dictionary allows player to select multiple stats
+        """
         inv = []
         with open('game_items.txt', 'r', encoding = 'utf-8') as f:
             for line in f:
