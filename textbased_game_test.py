@@ -47,12 +47,10 @@ def test_attack_player():
     #Change of Hp, player got hurt
     assert end_hp < begin_hp
 
-def test_validate_inventory():
+def test_validate_inventory(capsys):
     """Does inventory detect and handle foreign items as expected?"""
     test_category = board.Inventory()
     test_category.inventory['test_potion'] = 12,10,20
     inventory_result = test_category.get_item('foreign_name')
-    captured = capsys.readouterr()
-    assert captured.out == ("we don't have that, try again.\n"
-                            "What item?")
-    
+    with mock.patch("builtins.input", side_effect=["foreign_potion",'potion_list']
+        assert 

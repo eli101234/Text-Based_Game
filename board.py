@@ -4,7 +4,7 @@ Class that creates the game board and runs the game
 import random
 import player
 import monsters
-
+import functools
 import sys
 from time import sleep
 
@@ -23,6 +23,7 @@ class Item:
         self.hp = float(hp)
         self.power = float(power)
         self.defense = float(defense)
+
 
 class Inventory:
     """An inventory of healing objects available to player"""
