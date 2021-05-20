@@ -26,13 +26,16 @@ class Item:
 
 
 class Inventory:
-    """An inventory of healing objects available to player"""
+    """An inventory of healing objects/Items available to player
     
-    """Attributes:
+    
+    Attributes:
         inventory (dict): A dictionary containing health objects and their associated hp
     """
     
-    def __init__(self,):
+    def __init__(self):
+        """Initializes an inventory for the player
+        """
         self.inventory = {}
 
     
@@ -40,6 +43,8 @@ class Inventory:
         """ Uses instatiates an item object using info from inventory
         Args:
             name (str): item name
+        Returns:
+            The item key
         """
         
         if name in self.inventory:
@@ -61,7 +66,15 @@ class Inventory:
 
 
 class GameInventory:
+    """Creates the inventory for the game board itself. Players get the item
+    from here. Makes a finite amount of items for the board
+    
+    Attributes:
+        health_inv(list): Potion items. Consumables that grant health and stats
+        item_inv(list): Regular items. Grant stats primarily
+    """
     def __init__(self):
+        """Initializes an inventory for the board"""
         health_inv = []
         item_inv = []
         with open('game_items.txt', 'r', encoding = 'utf-8') as f:
@@ -91,6 +104,11 @@ class GameInventory:
     
 
     def present_potion(self):
+        """ Shows the potion and the stats associated with it
+        
+        Side effects:
+            prints the list of current potions in a player inventory
+        """
         if len(self.health_inv) >8:
             found_potion = self.health_inv.pop(random.randint(-2,2))
         else:
@@ -106,7 +124,14 @@ class GameInventory:
                   You check the room and find a legendary potion!
                   The {found_potion[0]}! It can heal you by {found_potion[1]} hp and boosts your defense by {found_potion[3]} points.""")
         return found_potion
+    
+    
     def present_item(self):
+        """ Shows the item and the stats associated with it
+        
+        Side effects:
+            prints the list of current items in a player inventory
+        """
         if len(self.item_inv) > 10:
             found_item = self.item_inv.pop(random.randint(-2,2))
         else:
@@ -132,6 +157,7 @@ class Board:
     def __init__(self):
         """
         Initializes Board object
+        
         """
         self.place = 0
         self.board_state = []
