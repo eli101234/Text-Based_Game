@@ -6,12 +6,18 @@ from unittest import mock
 
 #battle test
 def test_battle():
+    """
+    Does battle() return true if the player wins and false if they lose?
+    """
     test_inventory = board.Inventory()
     test_monsters = monsters.Monsters()
     test_player = player.Player("Tester", "assassin",test_inventory)
 
+    #battle between player and Aardvark. Player should win and return True
     with mock.patch("builtins.input", side_effect=["1"]):
         assert board.battle(test_player, test_monsters, "Aardvark") == True
+    
+    #battle between player and Aric. Player should lose and return False
     with mock.patch("builtins.input", side_effect=["1"]):
         assert board.battle(test_player, test_monsters, "Aric Bills") == False
         
@@ -19,22 +25,26 @@ def test_attack_monster(capsys):
     test_inventory = board.Inventory()
     test_player = player.Player("Test", "BRUISER", test_inventory)
     monster = monsters.Monsters(1,1,1)
-    hitLow = test_player.power - 5
+    begin = monster.hp
     test_player.attack_monster(monster)
+    end = monster.hp
+    #This helps me get just how much damage we randomly did to the monster
+    total = begin - end
+    #The actual test
     captured = capsys.readouterr()
-    if hit >= self.power - 5 and hit <= self.power + 5:
-        assert captured.out == (f"""
-                                Test did {hit} damage to the monster!\nThe monster has 0 hp!
-                                """)
+    assert captured.out == (f"Test did {str(total)} damage to the monster!\n"
+                            "The monster has 0 hp!\n")
         
+
 def test_attack_player():
     test_inventory = board.Inventory()
     test_player = player.Player("Test", "WARRIOR", test_inventory)
     monster = monsters.Monsters(30,30,30)
+    
     begin_hp = test_player.hp
     monster.attack_player(test_player)
     end_hp = test_player.hp
-    #Change of Hp
+    #Change of Hp, player got hurt
     assert end_hp < begin_hp
 
 def test_validate_inventory():

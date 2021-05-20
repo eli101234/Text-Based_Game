@@ -190,12 +190,17 @@ def battle(player, monster, monster_name):
         monster_name(String): name of the current monster
     
     Side Effects:
-        
+        prints messages in a menu-like structure in the console and asks
+        for user input
     """
+
+    #getting the monster's stats
     monster_stats = monster.monster[monster_name]
 
+    #creating the monster object
     current_monster = monsters.Monsters(int(monster_stats[0]), int(monster_stats[1]), int(monster_stats[2]))
 
+    #battle
     print("Battle commence!")
     try: 
         while(player.hp > 0 and current_monster.hp > 0):
@@ -234,6 +239,8 @@ def final_encounter(player, monster):
     Returns:
         boolean: returns true if the player will like to play or try again
     """
+
+    #uses the battle function to also do the final battle
     print("""Welcome to the final encounter challenger!""")
     sleep(2.00)
     print("Now you must fight Aric, the final boss! Commence!")
@@ -271,11 +278,15 @@ def monster_encounter():
     Returns:
         monster_name(String): the name of the monster the player will encounter
     """
+
+    #list of all the monsters 
     monster_list = ["Aardvark", "Vampire", "Werewolf", "Dark Boxer", "Loh",
     "Titan"]
 
+    #pick a random monster with certain chances
     choice = random.choices(monster_list, weights = [30, 20, 20, 15, 10, 5])
 
+    #obtaining the monster name
     monster_name = choice.pop()
 
     print(f"You have encountered a wild {monster_name}")
@@ -292,14 +303,22 @@ def main():
 
     #create the board
     new_game = Board()
+
+    #creating the monster's information
     monster_game = monsters.Monsters()
+
+    #creating the inventory
     inventory = Inventory()
+
     print("Hello and Welcome to the King of UMCP!")
+
     #create the player
     name = input("What is your name challenger?")
     classType = input("""What class would you like?\n(Assassin, Tank, Warrior, Bruiser):""")
     p1 = player.Player(name,classType,inventory)
+
     print(f"Get ready {name}!")
+
     game_inventory = GameInventory()
      # Can be Inventory(file) instead and i wont hardcode item.csv in Inventory
     print(f'Here are your health items:')
@@ -310,11 +329,12 @@ def main():
         option = input ("""
         1. Roll the dice
         2. Use inventory
-        4. Flee (Exits the game)
-        5. Check the board state
+        3. Flee (Exits the game)
+        4. Check the board state
         (ඞ is where you are, X is where you have been, and _ is undiscovered)
         """)
-        #maybe have a monster checker after each roll?
+        
+        #rolling and monster encounters
         if option == "1":
             roll = move()
             print(f"You rolled a {roll}!")
@@ -349,9 +369,8 @@ def main():
                     game_status = battle(p1, monster_game, monster_name)
                     #item
 
-            
-            
-        elif option == "2": # using health items
+        #using health items
+        elif option == "2":
             if len(inventory.inventory) == 0:
                 print('no items!')
             else:
@@ -368,22 +387,14 @@ def main():
                 #print(f'You gained {item.hp} hp, your health is now {p1.hp}')
                 print(f'your health is {p1.hp}, your power is {p1.power}, your defense is {p1.defense}')
             
+        #end the game   
         elif option == "3":
-            pass    
-            
-            
-        elif option == "4":
-            #A way to quit this game
             print(f"You decide this is all too much for you and flee, ending this journey...")
             exit()
-            
-            
-            
-        elif option == "5":
-            #Checks the board
+
+        #print the board     
+        elif option == "4":
             new_game.print_board()
-            
-        #monster encounter!    
         
 
 
