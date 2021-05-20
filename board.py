@@ -59,6 +59,7 @@ class Inventory:
         items_list = [key for key in self.inventory] # list comprehension
         print(items_list)
 
+
 class GameInventory:
     def __init__(self):
         health_inv = []
